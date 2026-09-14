@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GPT-6 Astra 인사이트 브리핑</title>
+<style>
+:root{--blue:#A9CCF4;--yellow:#FFFEB0;--paper:#FFFEFB;--ink:#11120F;--muted:#5E625B;--line:rgba(17,18,15,.18);--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--blue);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;line-height:1.58;word-break:keep-all}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 36px));margin:0 auto}.toolbar{position:fixed;right:18px;bottom:18px;z-index:30}.toolbar button{border:1px solid var(--ink);background:var(--paper);border-radius:999px;padding:10px 14px;font:inherit;font-weight:800;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.hero{padding:54px 0 64px;min-height:82vh;display:flex;align-items:center}.kicker,.tag,.eyebrow{font-size:12px;font-weight:850;letter-spacing:.04em}.kicker{display:flex;align-items:center;gap:9px}.dot{width:11px;height:11px;border-radius:50%;background:var(--yellow);border:1px solid var(--ink)}h1{font-size:clamp(56px,8.6vw,112px);line-height:.91;letter-spacing:-.065em;margin:22px 0 24px;font-weight:950;max-width:980px}.hero-sub{font-size:clamp(23px,2.7vw,34px);line-height:1.27;letter-spacing:-.035em;font-weight:780;max-width:870px;margin:0}.one-line{margin:34px 0 0;display:inline-block;background:var(--yellow);border:1.5px solid var(--ink);border-radius:20px;padding:18px 22px;font-size:clamp(24px,3vw,38px);font-weight:900;letter-spacing:-.04em;box-shadow:6px 6px 0 var(--ink)}.reaction-title{margin-top:46px;font-size:14px;font-weight:900}.reactions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.reaction{border:1.3px solid var(--ink);border-radius:20px;padding:18px;background:rgba(255,254,251,.56)}.reaction:nth-child(2){background:var(--yellow)}.reaction b{display:block;font-size:19px;margin-bottom:6px}.reaction p{margin:0;font-size:15px}.reaction a{font-size:12px;color:var(--muted);text-underline-offset:3px}
+.section{padding:72px 0}.paper{background:var(--paper)}.yellow{background:var(--yellow)}.blue{background:var(--blue)}.section-head{display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:start;margin-bottom:34px}.tag{padding-top:6px;color:#363932}.section h2{font-size:clamp(38px,5vw,66px);line-height:1.02;letter-spacing:-.055em;margin:0;max-width:920px}.lede{font-size:22px;line-height:1.42;letter-spacing:-.025em;max-width:870px;margin:18px 0 0}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1.3px solid var(--ink);border-radius:22px;padding:24px;background:var(--paper)}.card.bluec{background:var(--blue)}.card.yellowc{background:var(--yellow)}.eyebrow{display:block;margin-bottom:28px}.card h3{font-size:23px;line-height:1.2;margin:0 0 10px;letter-spacing:-.03em}.card p{margin:0}.metric{font-size:52px;font-weight:950;letter-spacing:-.06em;line-height:1;margin-bottom:9px}.note{font-size:13px;color:var(--muted)}.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.case{border:1.3px solid var(--ink);border-radius:24px;padding:24px;background:var(--paper);display:flex;flex-direction:column;min-height:350px}.case:nth-child(2){background:var(--blue)}.case:nth-child(3){background:var(--yellow)}.case .case-no{font-size:12px;font-weight:900;letter-spacing:.05em;margin-bottom:34px}.case h3{font-size:28px;line-height:1.12;letter-spacing:-.04em;margin:0 0 14px}.case p{margin:0 0 14px}.case .case-metric{font-size:42px;font-weight:950;letter-spacing:-.055em;line-height:1;margin:4px 0 12px}.case .case-source{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.case .case-source a{text-underline-offset:3px}.factcheck{margin-top:22px;border:1.5px solid var(--ink);border-radius:24px;background:var(--ink);color:var(--paper);padding:24px;display:grid;grid-template-columns:170px 1fr;gap:20px}.factcheck b{font-size:18px}.factcheck p{margin:0;font-size:17px}.factcheck strong{color:var(--yellow)}
+.shift{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}.big-claim{border:1.5px solid var(--ink);border-radius:28px;background:var(--ink);color:var(--paper);padding:30px;display:flex;align-items:flex-end;font-size:clamp(38px,5vw,66px);font-weight:950;line-height:1.03;letter-spacing:-.055em;min-height:360px}.steps{display:flex;flex-direction:column;gap:12px}.step{border:1.3px solid var(--ink);border-radius:20px;padding:20px;background:var(--paper)}.step b{font-size:21px;display:block;margin-bottom:6px}.step p{margin:0;color:#2f322c}
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.insight{border-top:2px solid var(--ink);padding-top:16px}.insight .n{font-size:34px;font-weight:950}.insight h3{font-size:22px;line-height:1.22;margin:8px 0}.insight p{margin:0}.questions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}.question{background:var(--yellow);border:1.5px solid var(--ink);border-radius:26px;padding:28px;font-size:25px;font-weight:850;line-height:1.35;min-height:220px;display:flex;align-items:flex-end}.availability{margin-top:28px;border-top:1.5px solid var(--ink);padding-top:18px;font-size:15px}.footer{background:var(--ink);color:var(--paper);padding:58px 0}.footer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px}.footer h2{font-size:30px;margin:0 0 16px}.sources{padding-left:18px;margin:0}.sources li{margin-bottom:10px}.sources a{text-underline-offset:3px}.small{font-size:13px;color:#c8cac4}
+@media(max-width:900px){.hero{min-height:auto}.reactions,.grid-3,.insights,.case-grid{grid-template-columns:1fr}.factcheck{grid-template-columns:1fr;gap:8px}.shift,.footer-grid{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:4px}.big-claim{min-height:260px}.questions{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{width:min(100% - 24px,var(--max))}h1{font-size:57px}.hero{padding-top:40px}.hero-sub{font-size:22px}.section{padding:54px 0}.section h2{font-size:41px}.lede{font-size:19px}.question{font-size:22px;min-height:190px}.toolbar{right:10px;bottom:10px}}
+@media print{.toolbar{display:none}body{background:white}.hero,.section,.footer{break-inside:avoid}a{text-decoration:none}.hero{min-height:auto}}
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">인쇄 · PDF 저장</button></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span> 2026.09.14 · INSIGHT BRIEFING</div>
+    <h1>대답하는 AI에서<br>대신 일하는 AI로.</h1>
+    <p class="hero-sub"><strong>컴퓨터를 직접 사용하고, 여러 단계를 이어가며, 완성된 결과물까지 만드는 능력</strong>이 전면에 나왔습니다.</p>
+    <div class="one-line">AI를 쓰는 방식이 ‘질문’에서 ‘위임’으로 바뀌고 있습니다.</div>
+
+    <div class="reaction-title">지금의 반응</div>
+    <div class="reactions">
+      <article class="reaction"><b>“이제 뭘 시켜볼 수 있나?”</b><p>이제 관심은 성능 점수보다, Astra로 실제 무엇을 만들 수 있는지에 쏠리고 있습니다.. 로봇 팔 조작, 게임 플레이, CAD 재구성처럼 AI를 현실의 도구와 연결하는 시도가 빠르게 늘고 있습니다.</p><a href="https://openai.robocurve.org/gpt-6-astra/" target="_blank" rel="noopener">RoboCurve · 2026.09.04</a></article>
+      <article class="reaction"><b>수요가 공급을 앞질렀습니다.</b><p>OpenAI는 Astra 수요가 “전례 없는 수준”이라고 밝힌 뒤, 시스템 부하가 가장 큰 월 200달러 Pro 20X의 신규 가입과 업그레이드를 일시 중단했습니다.</p><a href="https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro" target="_blank" rel="noopener">OpenAI Help Center · 2026.09.14 확인</a></article>
+      <article class="reaction"><b>“AGI인가?”보다 “어디까지 실제로 되나?”</b><p>Jensen Huang 등은 강한 표현으로 의미를 평가했지만, 사용자 평가는 여전히 엇갈립니다. 현재의 핵심 쟁점은 명칭보다 실제 업무에서의 신뢰성·비용·통제 가능성입니다.</p><a href="https://www.businessinsider.com/nvidia-jensen-huang-agi-openai-astra-ai-2026-9" target="_blank" rel="noopener">업계 반응 · 2026.09</a></article>
+    </div>
+  </div>
+</header>
+
+<section class="section paper">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">원문: A new generation of intelligence</div>
+      <div>
+        <h2>무엇이 달라졌습니까?</h2>
+        <p class="lede">Astra는 <strong>질문에 답하는 모델</strong>에서 <strong>업무를 위임받아 처리하는 모델</strong>로 무게중심을 옮겼습니다.</p>
+      </div>
+    </div>
+    <div class="shift">
+      <div class="big-claim">“무엇을<br>물어볼까?”보다<br>“무엇을<br>맡길까?”가<br>중요해집니다.</div>
+      <div class="steps">
+        <div class="step"><b>01 · 컴퓨터를 직접 사용합니다.</b><p>웹사이트, 파일, 앱을 오가며 실제 작업 단계를 수행합니다.</p></div>
+        <div class="step"><b>02 · 긴 업무 흐름을 유지합니다.</b><p>조사 → 분석 → 수정 → 검증처럼 여러 단계를 한 목표 아래 이어갑니다.</p></div>
+        <div class="step"><b>03 · ‘답’이 아니라 ‘완성본’을 지향합니다.</b><p>문서, 스프레드시트, 프레젠테이션, 코드 같은 산출물을 조직의 형식에 맞춰 만듭니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section blue">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">공개 사례 · 2026년 9월</div>
+      <div>
+        <h2>사람들은 이미 ‘새로운 쓰임’을 시험하고 있습니다.</h2>
+        <p class="lede">눈에 띄는 변화는 Astra가 글을 더 잘 쓴다는 데 있지 않습니다. <strong>AI를 로봇, 설계 도구, 과학 연구의 실제 작업 흐름에 연결해 보는 실험</strong>이 빠르게 늘고 있습니다.</p>
+      </div>
+    </div>
+    <div class="case-grid">
+      <article class="case">
+        <div class="case-no">01 · PHYSICAL AI</div>
+        <h3>로봇 팔이 카메라를 보고 직접 움직였습니다.</h3>
+        <div class="case-metric">19 / 20</div>
+        <p>RoboCurve는 Astra에 실제 YAM 로봇 팔을 연결했습니다. 빨간 블록을 집어 그릇에 넣는 작업에서 20회 중 19회 성공했습니다.</p>
+        <p class="note">다만 정밀하게 퍼즐 조각을 홈에 끼우는 작업은 20회 중 2회에 그쳤습니다. ‘범용 AI가 바로 로봇을 완성했다’고 보기는 어렵습니다.</p>
+        <div class="case-source"><a href="https://openai.robocurve.org/gpt-6-astra/" target="_blank" rel="noopener">RoboCurve, “GPT‑6 Astra on robotic manipulation” (2026.09.04)</a></div>
+      </article>
+      <article class="case">
+        <div class="case-no">02 · IMAGE → CAD</div>
+        <h3>여러 각도의 이미지를 보고 3D CAD를 재구성했습니다.</h3>
+        <div class="case-metric">95.9%</div>
+        <p><strong>BenchCAD</strong>는 여러 방향에서 본 렌더 이미지를 바탕으로 CAD 코드를 생성해 3D 물체를 재구성하는 평가입니다. OpenAI가 공개한 Astra의 기하학적 중첩 점수는 95.9%였습니다.</p>
+        <p class="note">GPT‑5.6 Sol은 83.3%, OpenAI가 인용한 Claude Fable 5.1은 84.3%였습니다. 이는 OpenAI가 보고한 벤치마크 결과입니다.</p>
+        <div class="case-source"><a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI, “A step change in professional work”</a></div>
+      </article>
+      <article class="case">
+        <div class="case-no">03 · SCIENTIFIC DISCOVERY</div>
+        <h3>신약개발에서는 AI가 유망한 후보 물질을 찾고 우선순위를 좁히는 데 활용되고 있습니다.</h3>
+        <div class="case-metric">49.3%</div>
+        <p>Astra는 과학 지식을 답하는 수준을 넘어, 연구용 소프트웨어를 직접 다루며 분석 작업에 참여하기 시작했습니다.</p>
+        <div class="case-source"><a href="https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials/" target="_blank" rel="noopener">OpenAI, 항균 후보 물질 탐색 사례 (2026.09.10)</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section yellow">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">원문: Computer use · Professional work</div>
+      <div>
+        <h2>숫자로 보면, ‘추론’보다 ‘업무 수행’의 점프가 눈에 띕니다.</h2>
+      </div>
+    </div>
+    <div class="grid-3">
+      <article class="card bluec"><span class="eyebrow">컴퓨터 사용 · OSWorld 2.0</span><div class="metric">72.6%</div><p>GPT‑5.6 Sol 65.7%. 같은 시뮬레이션에서 작업 시간은 약 <strong>75분 → 40분</strong>으로 줄었다고 OpenAI는 설명합니다.</p></article>
+      <article class="card"><span class="eyebrow">전문 업무 · AutomationBench</span><div class="metric">41.4%</div><p>GPT‑5.6 Sol 18.1% 대비. 여러 도구를 이용해 업무 자동화 과제를 끝까지 수행하는 평가입니다.</p></article>
+      <article class="card yellowc"><span class="eyebrow">사이버 보안 · Preparedness Framework</span><div class="metric">Critical</div><p>OpenAI가 사이버 보안 역량을 <strong>Critical</strong>로 분류한 첫 모델입니다. 성능 향상과 함께 통제 필요성도 커졌습니다.</p></article>
+    </div>
+    <p class="note" style="margin-top:16px">주의: 위 수치는 OpenAI가 공개한 평가 결과입니다. 실제 ChatGPT 환경의 평균 성능을 뜻하지 않으며, 독립적인 학술 검증 결과와도 구분해야 합니다.</p>
+  </div>
+</section>
+
+
+
+<section class="section paper">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">마지막 질문</div>
+      <div><h2>Astra를 보며 남겨둘 질문</h2></div>
+    </div>
+    <div class="questions">
+      <div class="question">AI가 ‘답변’이 아니라 ‘업무’를 수행한다면, 사람의 역량은 어디에서 확인해야 합니까?</div>
+      <div class="question">AI에게 더 많은 일을 맡길수록, 사람이 반드시 승인해야 할 지점은 어디입니까?</div>
+    </div>
+    <div class="availability"><strong>2026년 9월 14일 기준:</strong> GPT‑6 Astra 기반 GPT‑6 Pro는 Pro $100·Pro $200·Business·Enterprise에서 이용 범위가 확대되고 있으며, Plus는 Work와 Codex에서 Astra를 이용할 수 있습니다. 다만 <strong>Pro $200(20X)의 신규 가입·업그레이드는 일시 중단</strong>되어 있습니다. Pro $100·Plus·Go·API는 계속 제공됩니다.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>주요 출처</h2>
+      <ul class="sources">
+        <li><a href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI, “GPT‑6 Astra: A new generation of intelligence” (2026.09.03)</a></li>
+        <li><a href="https://openai.com/index/path-to-astra/" target="_blank" rel="noopener">OpenAI, “Path to Astra: critical capabilities and frontier safeguards” (2026.09.01)</a></li>
+        <li><a href="https://help.openai.com/ko-kr/articles/20001354" target="_blank" rel="noopener">OpenAI Help Center, “ChatGPT의 GPT‑5.6 및 GPT‑6 Pro”</a></li>
+        <li><a href="https://help.openai.com/ko-kr/articles/20001275" target="_blank" rel="noopener">OpenAI Help Center, “ChatGPT Work 및 Codex”</a></li>
+        <li><a href="https://openai.robocurve.org/gpt-6-astra/" target="_blank" rel="noopener">RoboCurve, “GPT‑6 Astra on robotic manipulation” (2026.09.04)</a></li>
+        <li><a href="https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials/" target="_blank" rel="noopener">OpenAI, antimicrobial discovery case (2026.09.10)</a></li>
+        <li><a href="https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro" target="_blank" rel="noopener">OpenAI Help Center, Pro $200 new-subscription pause (2026.09.10~)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>범위</h2>
+      <p>본 문서는 원문의 완역이 아닙니다. 공식 발표·평가·도움말과 2026년 9월 14일까지 공개된 활용 사례·사용자 반응을 바탕으로 핵심 변화만 선별한 한국어 요약·해설 자료입니다.</p>
+      <p class="small">커뮤니티·외부 실험은 특정 조건에서의 사례이며 전체 사용자 경험이나 일반적 성능을 대표하지 않습니다. OpenAI 자체 벤치마크와 외부 사례도 서로 구분해 해석해야 합니다. 외부 배포 시 원문 저작권과 각 사이트 이용약관을 확인해 주세요.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
